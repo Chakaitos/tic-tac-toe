@@ -31,8 +31,7 @@ var checkForWinner = function () {
     // TODO: Check for rest of game winning cases
   )
   {
-    console.log('somebody won');
-    // TODO: Trigger 'game-win' event with the winning player as the event data
+    $(document).trigger('game-win', currentPlayer);
   }
 };
 
