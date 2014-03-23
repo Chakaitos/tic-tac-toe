@@ -9,6 +9,7 @@ var spaces = [
 var player1 = 'veggies';
 var player2 = 'junkfood';
 var currentPlayer = null;
+var gameOver = false;
 
 var setNextTurn = function () {
   if (currentPlayer === player1) {
@@ -35,27 +36,32 @@ var checkForWinner = function () {
     || spaces[2] === spaces[4] && spaces[4] === spaces[6] ) {
 
     $(document).trigger('game-win', currentPlayer);
+    gameOver = true;
   }
 };
 
 $(document).on('click', '#board .space', function (e) {
   var spaceNum = $(e.currentTarget).index();
-  console.log('You clicked on space #' + spaceNum);
+  console.log('You clicked on space #' + spaceNum);   // FOR TESTING ONLY
 
   // Marks the space with the current player's name
-  if (spaces[spaceNum] !== player1 && spaces[spaceNum] !== player2) {
+  if (gameOver == false && spaces[spaceNum] !== player1 && spaces[spaceNum] !== player2) {
     spaces[spaceNum] = currentPlayer;
     // Adds a class to elem so css can take care of the visuals
     $('#board .space:eq(' + spaceNum + ')').addClass(currentPlayer);
     checkForWinner();
     setNextTurn();
-  } else {
-    alert("That space is already taken!")
+  } 
+  else if (gameOver == true) {
+    alert("The game is over!");
+  } 
+  else {
+    alert("That space is already taken!");
   };
 });
 
 $(document).on('game-win', function (e, winner) {
-  alert(winner + " wins this match!")
+  alert(winner + " wins this match!");
 });
 
 // Start the game
