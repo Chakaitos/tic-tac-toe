@@ -87,7 +87,7 @@ $('#new-game').on('click', function (e) {
   spaces = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
   player1 = prompt("Player 1 enter your name:");
   player2 = prompt("Player 2 enter your name:");
-  $('#title-label, #turn-label, #player1, #player1Wins, #player2, #playerWins').show();
+  $('#title-label, #turn-label, #player1, #player1-wins, #player2, #player2-wins').show();
   $('#player1').text(player1 + ":");
   $('#player2').text(player2 + ":");
   $('#player1-wins').text(player1Wins);
