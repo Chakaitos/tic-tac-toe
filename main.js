@@ -7,7 +7,9 @@ var spaces = [
 ];
 
 var player1 = 'veggies';
+var player1Wins = 0
 var player2 = 'junkfood';
+var player2Wins = 0
 var currentPlayer = null;
 var gameOver = false;
 
@@ -48,7 +50,12 @@ $(document).on('click', '#board .space', function (e) {
   if (gameOver == false && spaces[spaceNum] !== player1 && spaces[spaceNum] !== player2) {
     spaces[spaceNum] = currentPlayer;
     // Adds a class to elem so css can take care of the visuals
-    $('#board .space:eq(' + spaceNum + ')').addClass(currentPlayer);
+    if (currentPlayer == player1) {
+      $('#board .space:eq(' + spaceNum + ')').addClass('veggies');
+    } else {
+      $('#board .space:eq(' + spaceNum + ')').addClass('junkfood');
+    };
+
     checkForWinner();
     setNextTurn();
   } 
@@ -62,7 +69,29 @@ $(document).on('click', '#board .space', function (e) {
 
 $(document).on('game-win', function (e, winner) {
   alert(winner + " wins this match!");
+  $('#title-label, #turn-label').hide();
+  if (winner == player1) {
+    player1Wins += 1;
+  } else {
+    player2Wins += 1;
+  };
+  $('#player1-wins').text(player1Wins);
+  $('#player2-wins').text(player2Wins);
 });
 
 // Start the game
-setNextTurn();
+$('#new-game').on('click', function (e) {
+  $('#board .space').removeClass('veggies');
+  $('#board .space').removeClass('junkfood');
+  gameOver = false;
+  spaces = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
+  player1 = prompt("Player 1 enter your name:");
+  player2 = prompt("Player 2 enter your name:");
+  $('#title-label, #turn-label, #player1, #player1Wins, #player2, #playerWins').show();
+  $('#player1').text(player1 + ":");
+  $('#player2').text(player2 + ":");
+  $('#player1-wins').text(player1Wins);
+  $('#player2-wins').text(player2Wins);
+  setNextTurn();
+});
+

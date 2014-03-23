@@ -5,19 +5,26 @@
 </head>
 <body>
 
+<div class="container">
+  <h3 id="title-label">It's <span id="turn-label"></span>'s turn</h3><br />
+  <input id="new-game" type="button" value="Start New Game" />
 
-<h3>It's <span id="turn-label"></span>'s turn</h3>
+  <div id="board">
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+    <div class="space"></div>
+  </div>
 
-<div id="board">
-  <div class="space"></div>
-  <div class="space"></div>
-  <div class="space"></div>
-  <div class="space"></div>
-  <div class="space"></div>
-  <div class="space"></div>
-  <div class="space"></div>
-  <div class="space"></div>
-  <div class="space"></div>
+  <label id="player1"></label>
+  <label id="player1-wins"></label><br />
+  <label id="player2"></label>
+  <label id="player2-wins"></label><br />
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

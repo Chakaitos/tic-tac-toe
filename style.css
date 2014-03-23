@@ -14,6 +14,9 @@
   cursor: pointer;
   background: #ddd;
 }
+#turn-label, #title-label, #player1, #player2, #player1-wins, #player2-wins {
+  display: none;
+}
 
 /* Change background picture based on class name */
 #board .space.veggies {
@@ -24,3 +27,4 @@
   background: url("img/junkfood.jpg");
   background-size: 100% 100%;
 }
+
